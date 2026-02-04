@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('register', 'API\AuthController@register');
+Route::post('login', 'API\AuthController@login');
+
+// Rutas que requieren que el usuario esté logueado
+Route::group(['middleware' => ['jwt.verify']], function() {
+    Route::get('user', 'API\AuthController@getAuthenticatedUser');   
+    // Aquí irán las rutas de Libros y Autores después
+    Route::apiResource('authors', 'API\AuthorController');
+    Route::apiResource('books', 'API\BookController');
 });
