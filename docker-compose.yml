@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # El servidor de PHP
+  app:
+    build: .
+    container_name: laravel_app
+    volumes:
+      - ./src:/var/www
+    networks:
+      - laravel_net
+
+  # El servidor Web
+  webserver:
+    image: nginx:alpine
+    container_name: laravel_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - laravel_net
+
+  # Base de datos MySQL
+  mysql:
+    image: mysql:5.7
+    container_name: laravel_mysql
+    environment:
+      MYSQL_DATABASE: laravel_db
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - laravel_net
+
+  # Base de datos PostgreSQL
+  postgres:
+    image: postgres:11-alpine
+    container_name: laravel_postgres
+    environment:
+      POSTGRES_DB: laravel_pg
+      POSTGRES_PASSWORD: root
+    networks:
+      - laravel_net
+
+networks:
+  laravel_net:
+    driver: bridge

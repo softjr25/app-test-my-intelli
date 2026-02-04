@@ -1,0 +1,15 @@
+# --- Archivos de Sistema ---
+.DS_Store
+Thumbs.db
+
+# --- Docker & Entorno ---
+.env
+.env.backup
+docker-compose.override.yml
+
+src/vendor/
+src/node_modules/
+src/storage/*.key
+src/.env
+
+.vscode/
