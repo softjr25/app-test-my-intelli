@@ -35,7 +35,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \AppMyIntelli\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \AppMyIntelli\Http\Middleware\Cors::class,
+            //\AppMyIntelli\Http\Middleware\Cors::class,
         ],
 
         'api' => [
@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'jwt.verify' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+        //'cors' => \AppMyIntelli\Http\Middleware\Cors::class,
     ];
 
     /**

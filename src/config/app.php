@@ -174,7 +174,7 @@ return [
         // AppMyIntelli\Providers\BroadcastServiceProvider::class,
         AppMyIntelli\Providers\EventServiceProvider::class,
         AppMyIntelli\Providers\RouteServiceProvider::class,
-
+        JeroenNoten\LaravelAdminLte\ServiceProvider::class,
     ],
 
     /*
